@@ -1,0 +1,197 @@
+﻿<UserControl x:Class="Microsoft.Kinect.Samples.KinectPaint.Tutorial"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:Microsoft.Kinect.Samples.KinectPaint"
+             mc:Ignorable="d"
+             d:DesignHeight="720"
+             d:DesignWidth="1280">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="./Skins/GlobalStyles.xaml" />
+                <ResourceDictionary Source="./Skins/TutorialStyles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="150" />
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="1"
+              Style="{StaticResource MainCanvasStyle}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.5*" />
+                <ColumnDefinition Width="1" />
+                <ColumnDefinition Width="0.5*" />
+            </Grid.ColumnDefinitions>
+
+            <Rectangle Fill="{StaticResource PrimaryBrush}"
+                       Grid.Column="1"
+                       Margin="0,48,0,0" RenderTransformOrigin="0.5,0.5" >
+                <Rectangle.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="-90"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Rectangle.RenderTransform>
+            </Rectangle>
+
+            <Grid VerticalAlignment="Top"
+                  Style="{StaticResource LegendLeftStyle}"
+                  Margin="0,136,19.5,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="0.783*" />
+                </Grid.ColumnDefinitions>
+
+                <Path Style="{StaticResource ArrowStyle}" />
+
+                <StackPanel Grid.Column="1"
+                            Orientation="Vertical">
+                    <TextBlock Text="Mulai menggambar"
+                               Style="{StaticResource TitleTextStyle}" />
+
+                    <TextBlock
+                               Style="{StaticResource DescriptionTextStyle}" ><Run Text="Arahkan kursor ke atas ikon untuk "/><Run Text="memulai menggambar."/></TextBlock>
+                </StackPanel>
+            </Grid>
+
+            <Grid VerticalAlignment="Bottom"
+                  Style="{StaticResource LegendLeftStyle}"
+                  Margin="0,0,20,10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Path Style="{StaticResource ArrowStyle}"
+                      RenderTransformOrigin="0.5,0.5">
+                    <Path.RenderTransform>
+                        <RotateTransform Angle="-90" />
+                    </Path.RenderTransform>
+                </Path>
+
+                <StackPanel Grid.Column="1"
+                            Orientation="Vertical">
+                    <TextBlock Text="Pengubahan Warna"
+                               Style="{StaticResource TitleTextStyle}" />
+
+                    <TextBlock Text="Geser ke kiri atau kanan untuk mengubah warna, lalu arahkan kursor ke warna yang akan dipilih"
+                               Style="{StaticResource DescriptionTextStyle}" />
+                </StackPanel>
+            </Grid>
+
+            <StackPanel Grid.Column="2"
+                        Style="{StaticResource LegendRightStyle}"
+                        Margin="30,30,20,0">
+                <TextBlock TextWrapping="Wrap"
+                           Style="{StaticResource BigTitleTextStyle}" Text="Cara Penggunaan" />
+
+                <TextBlock TextWrapping="Wrap"
+                           Style="{StaticResource HighlightDescriptionTextStyle}" ><Run Text="Aplikasi Kinect Paint menggunakan gerak tubuh untuk memungkinkan Anda melukis ke kanvas. Anda memiliki"/><Run Text=" 4"/><Run Text=" pilihan alat gambar"/><Run Text=" dan"/><Run Text=" "/><Run Text="a"/><Run Text="nda bisa mengubah warna kuas dan kemudian menyimpan pekerjaan Anda untuk ditinjau nanti."/></TextBlock>
+
+                <Grid Margin="0,24,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Grid
+                         Margin="29,350,12,50">
+                        <Rectangle Fill="{DynamicResource PrimaryBrush}"/>
+
+                        <Image Source="Resources/cursor-wait.png"
+                			Style="{StaticResource LegendIconStyle}"/>
+                    </Grid>
+
+                    <StackPanel Grid.Column="1" Margin="0,370,200,-104" Grid.RowSpan="3">
+                        <TextBlock TextWrapping="Wrap"
+                                   Text="Kursor Memuat"
+                                   Style="{StaticResource TitleTextStyle}" />
+
+                        <TextBlock TextWrapping="Wrap"
+                                   Text="Kursor ini akan muncul selama 2 detik untuk menentukan pilihan"
+                                   Style="{StaticResource DescriptionTextStyle}" />
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="1"
+                                Grid.Row="1"/>
+
+                    <StackPanel Grid.ColumnSpan="2"
+                                Orientation="Vertical"
+                                Grid.Row="2"
+                                d:LayoutOverrides="Height"
+                                Margin="-540,-50,0,0">
+                        <TextBlock HorizontalAlignment="Left"
+                                   TextWrapping="Wrap"
+                                   Text="Step 1 : Gunakan tangan kanan untuk menggerakkan kursor."
+                                   VerticalAlignment="Top"
+                                   Style="{StaticResource DescriptionTextStyle}"
+                                   Margin="0,0,0,10" />
+
+                        <TextBlock HorizontalAlignment="Left"
+                                   TextWrapping="Wrap"
+                                   Text="Step 2 : Angkat tangan kiri diatas bahu untuk mulai menggambar."
+                                   VerticalAlignment="Top"
+                                   Style="{StaticResource DescriptionTextStyle}" Margin="0" />
+                    </StackPanel>
+                    <Image x:Name="image" Source="/KinectPaint;component/Resources/logo.jpg" HorizontalAlignment="Left" Height="300" VerticalAlignment="Top" Width="300" RenderTransformOrigin="6.12,3.27" Margin="-221,149,0,0"/>
+                </Grid>
+            </StackPanel>
+
+            <Grid VerticalAlignment="Bottom"
+                  Grid.Column="3"
+                  Style="{StaticResource LegendLeftStyle}"
+                  Margin="0,0,0,10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <Path Style="{StaticResource ArrowStyle}"
+                      Grid.Column="1"
+                      RenderTransformOrigin="0.5,0.5" Margin="15,-615.5,15,0">
+                    <Path.RenderTransform>
+                        <ScaleTransform ScaleY="1"
+                                        ScaleX="-1" />
+                    </Path.RenderTransform>
+                </Path>
+
+                <StackPanel Margin="0,-610,0,610">
+                    <TextBlock Text="Pilih alat gambar"
+                               Style="{StaticResource TitleTextStyle}"
+                               HorizontalAlignment="Right" />
+
+                    <TextBlock Text="Arahkan kursor ke atas icon untuk memilih alat gambar."
+                               Style="{StaticResource DescriptionTextStyle}"
+                               HorizontalAlignment="Right" />
+                </StackPanel>
+            </Grid>
+            <TextBlock TextWrapping="Wrap"
+                    Style="{StaticResource BigTitleTextStyle}" Margin="680,251,358,191" Grid.ColumnSpan="3" />
+            <Image
+                           Source="/KinectPaint;component/Resources/cursor-draw.png"
+                           Style="{StaticResource LegendIconStyle}" Height="84" Margin="29,386,312,190" />
+            <TextBlock TextWrapping="Wrap"
+                                   Text="Kursor Gambar"
+                                   Style="{StaticResource TitleTextStyle}" Margin="300,515,45,236" />
+            <TextBlock TextWrapping="Wrap"
+                                   Style="{StaticResource DescriptionTextStyle}" Margin="300,550,45,30" ><Run Text="K"/><Run Text="ursor ini menandakan tempat anda berada pada kanvas"/></TextBlock>
+        </Grid>
+    </Grid>
+</UserControl>
